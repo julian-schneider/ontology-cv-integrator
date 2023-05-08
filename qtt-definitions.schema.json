@@ -1,0 +1,560 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "array",
+    "default": [],
+    "title": "QTT creation definitions",
+    "items": {
+        "type": "object",
+        "required": [
+            "file",
+            "sheet",
+            "qtt_name",
+            "parent_superclass",
+            "parent_iri",
+            "parent_label",
+            "template_cols",
+            "drop_rows"
+        ],
+        "properties": {
+            "file": {
+                "type": "string",
+                "title": "Source spreadsheet file",
+                "examples": [
+                    "Controlled_Vocabularies_Master_Table_V1.04.xlsx"
+                ]
+            },
+            "sheet": {
+                "type": "string",
+                "title": "Source spreadsheet sheet name",
+                "examples": [
+                    "Product treatment",
+                    "Parameter distribution"
+                ]
+            },
+            "qtt_name": {
+                "type": "string",
+                "title": "Output QTT filename. Should end in .tsv.",
+                "examples": [
+                    "process_qtt.tsv",
+                    "param_dist_qtt.tsv"
+                ]
+            },
+            "parent_superclass": {
+                "type": "string",
+                "title": "Superclass of the parent class. Given as IRI. Must be in original ontology.",
+                "examples": [
+                    "http://purl.obolibrary.org/obo/BFO_0000015",
+                    "http://purl.obolibrary.org/obo/BFO_0000019"
+                ]
+            },
+            "parent_iri": {
+                "type": "string",
+                "title": "IRI of the parent class (Will be newly created)",
+                "examples": [
+                    "http://id.zbmed.de/ssd/Product_treatment",
+                    "http://id.zbmed.de/ssd/Parameter_distribution"
+                ]
+            },
+            "parent_label": {
+                "type": "string",
+                "title": "Label of the parent class",
+                "examples": [
+                    "Product treatment",
+                    "Parameter distribution"
+                ]
+            },
+            "template_cols": {
+                "type": "array",
+                "title": "Defines how columns from the original CV should become templates",
+                "items": {
+                    "type": "object",
+                    "title": "Defines how data is taken from one source column, transformed, gets its template string, and is written into the QTT file",
+                    "required": [
+                        "column",
+                        "template",
+                        "transformations"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "Human-readable title",
+                            "examples": [
+                                "Class Label",
+                                "Class IRI",
+                                "Definition",
+                                "Cross reference",
+                                "Definition source"
+                            ]
+                        },
+                        "column": {
+                            "type": "string",
+                            "title": "Column name in the source spreadsheet",
+                            "examples": [
+                                "Value",
+                                "ID",
+                                "Comment"
+                            ]
+                        },
+                        "template": {
+                            "type": "string",
+                            "title": "Valid QTT template string, as defined in http://robot.obolibrary.org/template.html",
+                            "examples": [
+                                "LABEL",
+                                "ID",
+                                "A http://purl.obolibrary.org/obo/IAO_0000115",
+                                "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                                "A http://purl.obolibrary.org/obo/IAO_0000119"
+                            ]
+                        },
+                        "transformations": {
+                            "type": "array",
+                            "title": "Zero or more transformations that should be applied to the column, in the same order as defined here",
+                            "items": {
+                                "type": "object",
+                                "title": "Describes a simple string transformation",
+                                "required": [
+                                    "type",
+                                    "params"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "title": "Type of transformation",
+                                        "enum": [
+                                            "prefix",
+                                            "suffix",
+                                            "split_before",
+                                            "split_after",
+                                            "replace",
+                                            "use_fixed"
+                                        ]
+                                    },
+                                    "params": {
+                                        "type": "array",
+                                        "title": "Parameters for the transformation. Amount depends on the type: 2 for replace, 1 for others.",
+                                        "items": {
+                                            "type": "string",
+                                            "examples": [
+                                                "http://id.zbmed.de/ssd/",
+                                                "EFSA_SSD2:"
+                                            ]
+                                        },
+                                        "examples": [
+                                            [
+                                                "http://id.zbmed.de/ssd/"],
+                                            [
+                                                "EFSA_SSD2:"],
+                                            [
+                                                "http://id.zbmed.de/ssd/"],
+                                            [
+                                                "EFSA_SSD2:"]
+                                        ]
+                                    }
+                                },
+                                "examples": [{
+                                    "type": "prefix",
+                                    "params": [
+                                        "http://id.zbmed.de/ssd/"
+                                    ]
+                                },
+                                {
+                                    "type": "prefix",
+                                    "params": [
+                                        "EFSA_SSD2:"
+                                    ]
+                                },
+                                {
+                                    "type": "prefix",
+                                    "params": [
+                                        "http://id.zbmed.de/ssd/"
+                                    ]
+                                },
+                                {
+                                    "type": "prefix",
+                                    "params": [
+                                        "EFSA_SSD2:"
+                                    ]
+                                }]
+                            },
+                            "examples": [
+                                [],
+                                [{
+                                    "type": "prefix",
+                                    "params": [
+                                        "http://id.zbmed.de/ssd/"
+                                    ]
+                                }],
+                                [],
+                                [{
+                                    "type": "prefix",
+                                    "params": [
+                                        "EFSA_SSD2:"
+                                    ]
+                                }],
+                                [],
+                                [{
+                                    "type": "prefix",
+                                    "params": [
+                                        "http://id.zbmed.de/ssd/"
+                                    ]
+                                }],
+                                [],
+                                [{
+                                    "type": "prefix",
+                                    "params": [
+                                        "EFSA_SSD2:"
+                                    ]
+                                }]
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "name": "Class Label",
+                        "column": "Value",
+                        "template": "LABEL",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Class IRI",
+                        "column": "ID",
+                        "template": "ID",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "http://id.zbmed.de/ssd/"
+                            ]
+                        }]
+                    },
+                    {
+                        "name": "Definition",
+                        "column": "Comment",
+                        "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Cross reference",
+                        "column": "ID",
+                        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "EFSA_SSD2:"
+                            ]
+                        }]
+                    },
+                    {
+                        "name": "Class Label",
+                        "column": "Value",
+                        "template": "LABEL",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Class IRI",
+                        "column": "ID",
+                        "template": "ID",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "http://id.zbmed.de/ssd/"
+                            ]
+                        }]
+                    },
+                    {
+                        "name": "Definition source",
+                        "column": "Comment",
+                        "template": "A http://purl.obolibrary.org/obo/IAO_0000119",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Cross reference",
+                        "column": "ID",
+                        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "EFSA_SSD2:"
+                            ]
+                        }]
+                    }]
+                },
+                "examples": [
+                    [{
+                        "name": "Class Label",
+                        "column": "Value",
+                        "template": "LABEL",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Class IRI",
+                        "column": "ID",
+                        "template": "ID",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "http://id.zbmed.de/ssd/"
+                            ]
+                        }]
+                    },
+                    {
+                        "name": "Definition",
+                        "column": "Comment",
+                        "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Cross reference",
+                        "column": "ID",
+                        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "EFSA_SSD2:"
+                            ]
+                        }]
+                    }],
+                    [{
+                        "name": "Class Label",
+                        "column": "Value",
+                        "template": "LABEL",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Class IRI",
+                        "column": "ID",
+                        "template": "ID",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "http://id.zbmed.de/ssd/"
+                            ]
+                        }]
+                    },
+                    {
+                        "name": "Definition source",
+                        "column": "Comment",
+                        "template": "A http://purl.obolibrary.org/obo/IAO_0000119",
+                        "transformations": []
+                    },
+                    {
+                        "name": "Cross reference",
+                        "column": "ID",
+                        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                        "transformations": [{
+                            "type": "prefix",
+                            "params": [
+                                "EFSA_SSD2:"
+                            ]
+                        }]
+                    }]
+                ]
+            },
+            "drop_rows": {
+                "type": "array",
+                "title": "Defines rows to drop. Indexed as in Excel.",
+                "items": {
+                    "type": "integer",
+                    "examples": [
+                        33,
+                        51,
+                        105,
+                        154
+                    ]
+                },
+                "examples": [
+                    [33,
+                        51],
+                    [105,
+                        154
+                    ]
+                ]
+            }
+        },
+        "examples": [{
+            "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+            "sheet": "Product treatment",
+            "qtt_name": "process_qtt.tsv",
+            "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+            "parent_iri": "http://id.zbmed.de/ssd/Product_treatment",
+            "parent_label": "Product treatment",
+            "template_cols": [{
+                "name": "Class Label",
+                "column": "Value",
+                "template": "LABEL",
+                "transformations": []
+            },
+            {
+                "name": "Class IRI",
+                "column": "ID",
+                "template": "ID",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "http://id.zbmed.de/ssd/"
+                    ]
+                }]
+            },
+            {
+                "name": "Definition",
+                "column": "Comment",
+                "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+                "transformations": []
+            },
+            {
+                "name": "Cross reference",
+                "column": "ID",
+                "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "EFSA_SSD2:"
+                    ]
+                }]
+            }],
+            "drop_rows": [
+                33,
+                51
+            ]
+        },
+        {
+            "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+            "sheet": "Parameter distribution",
+            "qtt_name": "param_dist_qtt.tsv",
+            "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+            "parent_iri": "http://id.zbmed.de/ssd/Parameter_distribution",
+            "parent_label": "Parameter distribution",
+            "template_cols": [{
+                "name": "Class Label",
+                "column": "Value",
+                "template": "LABEL",
+                "transformations": []
+            },
+            {
+                "name": "Class IRI",
+                "column": "ID",
+                "template": "ID",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "http://id.zbmed.de/ssd/"
+                    ]
+                }]
+            },
+            {
+                "name": "Definition source",
+                "column": "Comment",
+                "template": "A http://purl.obolibrary.org/obo/IAO_0000119",
+                "transformations": []
+            },
+            {
+                "name": "Cross reference",
+                "column": "ID",
+                "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "EFSA_SSD2:"
+                    ]
+                }]
+            }],
+            "drop_rows": [
+                105,
+                154
+            ]
+        }],
+        "title": "Defines QTT creation for one CV from one spreadsheet"
+    },
+    "examples": [
+        [{
+            "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+            "sheet": "Product treatment",
+            "qtt_name": "process_qtt.tsv",
+            "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+            "parent_iri": "http://id.zbmed.de/ssd/Product_treatment",
+            "parent_label": "Product treatment",
+            "template_cols": [{
+                "name": "Class Label",
+                "column": "Value",
+                "template": "LABEL",
+                "transformations": []
+            },
+            {
+                "name": "Class IRI",
+                "column": "ID",
+                "template": "ID",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "http://id.zbmed.de/ssd/"
+                    ]
+                }]
+            },
+            {
+                "name": "Definition",
+                "column": "Comment",
+                "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+                "transformations": []
+            },
+            {
+                "name": "Cross reference",
+                "column": "ID",
+                "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "EFSA_SSD2:"
+                    ]
+                }]
+            }],
+            "drop_rows": [
+                33,
+                51
+            ]
+        },
+        {
+            "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+            "sheet": "Parameter distribution",
+            "qtt_name": "param_dist_qtt.tsv",
+            "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+            "parent_iri": "http://id.zbmed.de/ssd/Parameter_distribution",
+            "parent_label": "Parameter distribution",
+            "template_cols": [{
+                "name": "Class Label",
+                "column": "Value",
+                "template": "LABEL",
+                "transformations": []
+            },
+            {
+                "name": "Class IRI",
+                "column": "ID",
+                "template": "ID",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "http://id.zbmed.de/ssd/"
+                    ]
+                }]
+            },
+            {
+                "name": "Definition source",
+                "column": "Comment",
+                "template": "A http://purl.obolibrary.org/obo/IAO_0000119",
+                "transformations": []
+            },
+            {
+                "name": "Cross reference",
+                "column": "ID",
+                "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+                "transformations": [{
+                    "type": "prefix",
+                    "params": [
+                        "EFSA_SSD2:"
+                    ]
+                }]
+            }],
+            "drop_rows": [
+                105,
+                154
+            ]
+        }]
+    ]
+}

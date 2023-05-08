@@ -15,7 +15,10 @@ def apply_transformation(string, transformation, args): #simple pre-defined stri
     if transformation == 'use_fixed': return args[0]
 
 
+# EDITABLE DEFAULTS:
 robot_installation = '/custom/path/to/ROBOT'
+qtt_json = 'example-qtts.json'
+
 os.environ['PATH'] += ':'+robot_installation
 
 # Download BFO, unless it already exists
@@ -23,7 +26,7 @@ if not os.path.isfile('bfo.owl'):
     wget.download('http://purl.obolibrary.org/obo/bfo.owl')
 
 # Build QTT files from JSON definitions
-qtt_defs = json.load(open('example-qtts.json'))
+qtt_defs = json.load(open(qtt_json))
 finished_qtt_files = []
 
 for qtt_def in qtt_defs:
