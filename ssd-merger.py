@@ -16,10 +16,10 @@ def apply_transformation(string, transformation, args): #simple pre-defined stri
 
 
 # EDITABLE DEFAULTS:
-robot_installation = '/custom/path/to/ROBOT'
 qtt_json = 'example-qtts.json'
+run_robot_subprocess = False #runs ROBOT template method directly after finishing QTT creation
+robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
 
-os.environ['PATH'] += ':'+robot_installation
 
 # Download BFO, unless it already exists
 if not os.path.isfile('bfo.owl'):
@@ -63,9 +63,11 @@ for qtt_def in qtt_defs:
     df_out.to_csv('qtt/'+qtt_def['qtt_name'], sep='\t', header=False, index=False)
     finished_qtt_files.append('qtt/'+qtt_def['qtt_name'])
 
-# Run ROBOT template for all built QTT files
+
+# Optionally run ROBOT template for all built QTT files
 robot_cmd = 'robot template --merge-before -t '+ ' -t '.join(finished_qtt_files)+' --input bfo.owl --output bfo_with_ssd.owl'
-subprocess.run(robot_cmd, shell=True)
-
-
-print('fin')
+if run_robot_subprocess:
+    os.environ['PATH'] += ':'+robot_installation
+    subprocess.run(robot_cmd, shell=True)
+else:
+    print('ROBOT command to run:', robot_cmd, sep='\n')
