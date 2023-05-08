@@ -4,6 +4,11 @@ Reads controlled vocabulary contents from Excel spreadsheets, transforming them 
 Optionally runs uses ROBOT's template function to insert them into BFO.
 
 
+## Prerequisites
+- Python 3.8
+- [ROBOT tools](http://robot.obolibrary.org/)
+
+
 ## Usage
 1) Copy source Excel spreadsheet to this directory
 2) Create a JSON file outlining how CVs from the Excel file should become QTTs. JSON file must conform to `qtt-definitions.schema.json`. Edit the input JSON filename in `qtt-creator.py`.
