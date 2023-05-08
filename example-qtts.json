@@ -1,0 +1,93 @@
+[
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Product treatment",
+    "qtt_name": "process_qtt.tsv",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Product_treatment",
+    "parent_label": "Product treatment",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+        "transformations": []
+      },
+      {
+        "name": "Cross reference",
+        "column": "ID",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["EFSA_SSD2:"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [33, 51]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter distribution",
+    "qtt_name": "param_dist_qtt.tsv",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+    "parent_iri": "http://id.zbmed.de/ssd/Parameter_distribution",
+    "parent_label": "Parameter distribution",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      },
+      {
+        "name": "Definition source",
+        "column": "Comment",
+        "template": "A http://purl.obolibrary.org/obo/IAO_0000119",
+        "transformations": []
+      },
+      {
+        "name": "Cross reference",
+        "column": "ID",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasDbXref",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["EFSA_SSD2:"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [105,154]
+  }
+]
