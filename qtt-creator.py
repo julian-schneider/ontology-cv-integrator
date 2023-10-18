@@ -30,7 +30,7 @@ qtt_defs = json.load(open(qtt_json))
 finished_qtt_files = []
 
 for qtt_def in qtt_defs:
-    df_in = pd.read_excel(qtt_def['file'], sheet_name=qtt_def['sheet'])
+    df_in = pd.read_excel(qtt_def['file'], sheet_name=qtt_def['sheet'], keep_default_na=False)
     df_in.drop([idx-2 for idx in qtt_def['drop_rows']], inplace=True) #shift drop-indices because it is given as excel-index
 
     qtt_def['template_cols'].append({ # automatically define superclass column
