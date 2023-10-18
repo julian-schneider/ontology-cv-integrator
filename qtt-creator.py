@@ -33,13 +33,22 @@ for qtt_def in qtt_defs:
     df_in = pd.read_excel(qtt_def['file'], sheet_name=qtt_def['sheet'], keep_default_na=False)
     df_in.drop([idx-2 for idx in qtt_def['drop_rows']], inplace=True) #shift drop-indices because it is given as excel-index
 
+    qtt_def['template_cols'].append({ # automatically define type column
+        "name": "entity type (automatic)",
+        "column": None,
+        "template": "TYPE",
+        "transformations": [{
+            "type": "use_fixed",
+            "params": [qtt_def['parent_iri']]
+        }]
+      })
     qtt_def['template_cols'].append({ # automatically define superclass column
         "name": "superclass (automatic)",
         "column": None,
         "template": "SC %",
         "transformations": [{
             "type": "use_fixed",
-            "params": [qtt_def['parent_iri']]
+            "params": ['']
         }]
       })
 
@@ -49,6 +58,7 @@ for qtt_def in qtt_defs:
 
         if template_def['template'] == 'ID': parent_cell = qtt_def['parent_iri']
         elif template_def['template'] == 'LABEL': parent_cell = qtt_def['parent_label']
+        elif template_def['template'] == 'TYPE': parent_cell = 'owl:Class'
         elif template_def['template'] == 'SC %': parent_cell = qtt_def['parent_superclass']
         else: parent_cell = ''
 
