@@ -1,7 +1,7 @@
 # Adds Controlled Vocabularies to BFO
 
 Reads controlled vocabulary contents from Excel spreadsheets, transforming them into valid [Quick Term Template](http://robot.obolibrary.org/template) files.
-Optionally runs uses ROBOT's template function to insert them into BFO.
+Optionally runs uses ROBOT's template function to insert them into an empty ontology that imports BFO.
 
 
 ## Prerequisites

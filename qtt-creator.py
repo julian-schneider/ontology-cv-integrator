@@ -21,10 +21,6 @@ run_robot_subprocess = False #runs ROBOT template method directly after finishin
 robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
 
 
-# Download BFO, unless it already exists
-if not os.path.isfile('bfo.owl'):
-    wget.download('http://purl.obolibrary.org/obo/bfo.owl')
-
 # Build QTT files from JSON definitions
 qtt_defs = json.load(open(qtt_json))
 finished_qtt_files = []
@@ -75,7 +71,7 @@ for qtt_def in qtt_defs:
 
 
 # Optionally run ROBOT template for all built QTT files
-robot_cmd = 'robot template --merge-before -t '+ ' -t '.join(finished_qtt_files)+' --input bfo.owl --output bfo_with_ssd.owl'
+robot_cmd = 'robot template --merge-before -t '+ ' -t '.join(finished_qtt_files)+' --input cv-ontology-base.owl --output cv-ontology-filled.owl'
 if run_robot_subprocess:
     os.environ['PATH'] += ':'+robot_installation
     subprocess.run(robot_cmd, shell=True)
