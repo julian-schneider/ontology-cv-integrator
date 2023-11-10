@@ -9,12 +9,14 @@
             "file",
             "sheet",
             "qtt_name",
+            "type",
             "parent_superclass",
             "parent_iri",
             "parent_label",
             "template_cols",
             "drop_rows"
         ],
+        "additionalProperties": false,
         "properties": {
             "file": {
                 "type": "string",
@@ -39,6 +41,14 @@
                     "param_dist_qtt.tsv"
                 ]
             },
+            "type": {
+                "type": "string",
+                "title": "Entity type that should be created. Properties not yet supported.",
+                "enum": [
+                    "class",
+                    "individual"
+                ]
+            },
             "parent_superclass": {
                 "type": "string",
                 "title": "Superclass of the parent class. Given as IRI. Must be in original ontology.",
@@ -61,6 +71,15 @@
                 "examples": [
                     "Product treatment",
                     "Parameter distribution"
+                ]
+            },
+            "language": {
+                "type": "string",
+                "title": "Can be used to add a language annotation property to the label. String must be a valid language code. Does not affect other columns (use AL template for others).",
+                "examples": [
+                    "en",
+                    "de",
+                    "sw"
                 ]
             },
             "template_cols": {
