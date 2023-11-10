@@ -2,6 +2,7 @@ import subprocess
 import os
 import wget
 import json
+from jsonschema import validate
 import pandas as pd
 
 
@@ -21,10 +22,16 @@ run_robot_subprocess = False #runs ROBOT template method directly after finishin
 robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
 
 
-# Build QTT files from JSON definitions
+# Load JSON definitions and validate the input
 qtt_defs = json.load(open(qtt_json))
-finished_qtt_files = []
+validate(
+    instance=qtt_defs,
+    schema=json.load(open("qtt-definitions.schema.json"))
+)
+print("Successfully validated the given definitions JSON file:", qtt_json)
 
+# Build QTT files from JSON definitions
+finished_qtt_files = []
 for qtt_def in qtt_defs:
     df_in = pd.read_excel(qtt_def['file'], sheet_name=qtt_def['sheet'], keep_default_na=False)
     df_in.drop([idx-2 for idx in qtt_def['drop_rows']], inplace=True) #shift drop-indices because it is given as excel-index
