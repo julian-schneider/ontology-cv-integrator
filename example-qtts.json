@@ -29,7 +29,7 @@
       {
         "name": "Definition",
         "column": "Comment",
-        "template": "A http://purl.obolibrary.org/obo/IAO_0000115",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
         "transformations": []
       },
       {
@@ -93,5 +93,553 @@
       }
     ],
     "drop_rows": [105,154]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Language",
+    "qtt_name": "language_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Language",
+    "parent_label": "Language",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [20]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Product-matrix name",
+    "qtt_name": "product-matrix_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+    "parent_iri": "http://id.zbmed.de/ssd/Product-matrix_name",
+    "parent_label": "Product-matrix name",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      },
+      {
+        "name": "Scientific name",
+        "column": "Comment",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+        "transformations": [
+          {
+            "type": "replace",
+            "params": ["None", ""]
+          }]
+      }
+    ],
+    "drop_rows": [198, 208]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Method of production",
+    "qtt_name": "method-of-production_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Method_of_production",
+    "parent_label": "Method of production",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [10, 12]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Packaging",
+    "qtt_name": "packaging_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+    "parent_iri": "http://id.zbmed.de/ssd/Packaging",
+    "parent_label": "Packaging",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [21, 23]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Country",
+    "qtt_name": "country_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Country",
+    "parent_label": "Country",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [244]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Area of origin",
+    "qtt_name": "area_of_origin_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Area_of_origin",
+    "parent_label": "Area of origin",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Fisheries area",
+    "qtt_name": "fisheries_area_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Fisheries_area",
+    "parent_label": "Fisheries area",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Hazard type",
+    "qtt_name": "hazard_type_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+    "parent_iri": "http://id.zbmed.de/ssd/Hazard_type",
+    "parent_label": "Hazard type",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [6,9]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Hazard name",
+    "qtt_name": "hazard_name_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+    "parent_iri": "http://id.zbmed.de/ssd/Hazard_name",
+    "parent_label": "Hazard name",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [4077, 4078, 4131, 8953, 8954]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Hazard ind-sum",
+    "qtt_name": "hazard_ind-sum_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000001",
+    "parent_iri": "http://id.zbmed.de/ssd/Hazard_ind-sum",
+    "parent_label": "Hazard ind-sum",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [3]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Population name",
+    "qtt_name": "population_name_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+    "parent_iri": "http://id.zbmed.de/ssd/Population_name",
+    "parent_label": "Population name",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [21]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Region",
+    "qtt_name": "region_qtt.tsv",
+    "type": "individual",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Region",
+    "parent_label": "Region",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Study Assay Technology Type",
+    "qtt_name": "study_assay_technology_type_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+    "parent_iri": "http://id.zbmed.de/ssd/Study_Assay_Technology_Type",
+    "parent_label": "Study Assay Technology Type",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [144]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Accreditation procedure Ass.Tec",
+    "qtt_name": "accreditation_procedure_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Accreditation_procedure_Ass.Tec",
+    "parent_label": "Accreditation procedure Ass.Tec",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [5]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Sampling strategy",
+    "qtt_name": "sampling_strategy_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Sampling_strategy",
+    "parent_label": "Sampling strategy",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [4, 6]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Type of sampling program",
+    "qtt_name": "type_of_sampling_program_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Type_of_sampling_program",
+    "parent_label": "Type of sampling program",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [21]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Sampling method",
+    "qtt_name": "sampling_method_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+    "parent_iri": "http://id.zbmed.de/ssd/Sampling_method",
+    "parent_label": "Sampling method",
+    "template_cols": [
+      {
+        "name": "Class Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Class IRI",
+        "column": "ID",
+        "template": "ID",
+        "transformations": [
+          {
+            "type": "prefix",
+            "params": ["http://id.zbmed.de/ssd/"]
+          }
+        ]
+      }
+    ],
+    "drop_rows": [13, 16, 19]
   }
 ]
