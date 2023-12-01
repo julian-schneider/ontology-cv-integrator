@@ -1,5 +1,67 @@
 [
   {
+    "file": "FSKX_additional_Vocabulary.xlsx",
+    "sheet": "objectProperties",
+    "qtt_name": "additional-objProps_qtt.tsv",
+    "type": "objectProperty",
+    "language": "en",
+    "template_cols": [
+      {
+        "name": "Property Label",
+        "column": "Label",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Description",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      },
+      {
+        "name": "External Definition",
+        "column": "external Definition",
+        "template": "AL http://purl.org/dc/terms/source@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+  {
+    "file": "FSKX_additional_Vocabulary.xlsx",
+    "sheet": "datatypeProperties",
+    "qtt_name": "additional-dataTypeProps_qtt.tsv",
+    "type": "datatypeProperty",
+    "language": "en",
+    "template_cols": [
+      {
+        "name": "Property Label",
+        "column": "Label",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Description",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      },
+      {
+        "name": "External Definition",
+        "column": "external Definition",
+        "template": "AL http://purl.org/dc/terms/source@en",
+        "transformations": []
+      },
+      {
+        "name": "Abbreviation",
+        "column": "Abbreviation",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+  {
     "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
     "sheet": "Product treatment",
     "qtt_name": "process_qtt.tsv",
