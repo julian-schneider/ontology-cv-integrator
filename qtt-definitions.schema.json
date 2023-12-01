@@ -10,9 +10,6 @@
             "sheet",
             "qtt_name",
             "type",
-            "parent_superclass",
-            "parent_iri",
-            "parent_label",
             "template_cols",
             "drop_rows"
         ],
@@ -46,32 +43,37 @@
                 "title": "Entity type that should be created. Properties not yet supported.",
                 "enum": [
                     "class",
-                    "individual"
+                    "individual",
+                    "datatypeProperty",
+                    "objectProperty"
                 ]
             },
-            "parent_superclass": {
-                "type": "string",
-                "title": "Superclass of the parent class. Given as IRI. Must be in original ontology.",
-                "examples": [
-                    "http://purl.obolibrary.org/obo/BFO_0000015",
-                    "http://purl.obolibrary.org/obo/BFO_0000019"
-                ]
-            },
-            "parent_iri": {
-                "type": "string",
-                "title": "IRI of the parent class (Will be newly created)",
-                "examples": [
-                    "http://id.zbmed.de/ssd/Product_treatment",
-                    "http://id.zbmed.de/ssd/Parameter_distribution"
-                ]
-            },
-            "parent_label": {
-                "type": "string",
-                "title": "Label of the parent class",
-                "examples": [
-                    "Product treatment",
-                    "Parameter distribution"
-                ]
+            "parent": {
+                "type": "object",
+                "title": "Contains information about the parent (entity to which subClassOf/subPropertyOf/instanceOf should point). Required if 'type' is 'individual'.",
+                "required": [
+                    "parent_superclass",
+                    "parent_label"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "parent_superclass": {
+                        "type": "string",
+                        "title": "Superclass of the parent. Given as IRI. Must be in original ontology.",
+                        "examples": [
+                            "http://purl.obolibrary.org/obo/BFO_0000015",
+                            "http://purl.obolibrary.org/obo/BFO_0000019"
+                        ]
+                    },
+                    "parent_label": {
+                        "type": "string",
+                        "title": "Label of the parent",
+                        "examples": [
+                            "Product treatment",
+                            "Parameter distribution"
+                        ]
+                    }
+                }
             },
             "language": {
                 "type": "string",

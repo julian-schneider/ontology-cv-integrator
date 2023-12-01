@@ -8,7 +8,7 @@ import pandas as pd
 
 def apply_transformation(string, transformation, args): #simple pre-defined string transformations
     assert transformation in ['prefix', 'suffix', 'split_before', 'split_after', 'replace', 'use_fixed'], '"'+transformation+'" is not a valid transformation'
-    if transformation == 'prefix': return args[0]+string
+    if transformation == 'prefix': return args[0]+str(string)
     if transformation == 'suffix': return string+args[0]
     if transformation == 'split_before': return string.split(args[0],1)[0]
     if transformation == 'split_after': return string.split(args[0],1)[-1]
@@ -16,10 +16,19 @@ def apply_transformation(string, transformation, args): #simple pre-defined stri
     if transformation == 'use_fixed': return args[0]
 
 
+entity_type_map = {
+    'class': 'owl:Class',
+    'individual': 'owl:Individual', #not used, since instantiated class is the type instead, in QTT
+    'datatypeProperty': 'owl:DatatypeProperty',
+    'objectProperty': 'owl:ObjectProperty'
+}
+
 # EDITABLE DEFAULTS:
 qtt_json = 'example-qtts.json'
 run_robot_subprocess = False #runs ROBOT template method directly after finishing QTT creation
 robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
+iri_base = 'http://id.zbmed.de/fskxo/'
+iri_id_start = 1 #lowest number that should be assigned
 
 
 # Load JSON definitions and validate the input
@@ -30,14 +39,36 @@ validate(
 )
 print("Successfully validated the given definitions JSON file:", qtt_json)
 
+next_iri_id = iri_id_start
 # Build QTT files from JSON definitions
 finished_qtt_files = []
 for qtt_def in qtt_defs:
     df_in = pd.read_excel(qtt_def['file'], sheet_name=qtt_def['sheet'], keep_default_na=False)
     df_in.drop([idx-2 for idx in qtt_def['drop_rows']], inplace=True) #shift drop-indices because it is given as excel-index
+    df_in.reset_index(drop=True, inplace=True)
 
-    # entities are either classes, or instances of parent Class. TODO support properties
-    entity_type = 'owl:Class' if qtt_def['type'] == 'class' else qtt_def['parent_iri']
+    if qtt_def['type'] == 'individual':
+        assert 'parent' in qtt_def, 'Individuals for '+qtt_def['qtt_name']+' cannot be created, because no parent has been supplied.'
+
+    # Assign IRIs for parent and entities
+    if "parent" in qtt_def:
+        parent_iri = iri_base + str(next_iri_id).zfill(7)
+        next_iri_id += 1
+    df_in['IRIs'] = pd.Series(range(next_iri_id, next_iri_id + df_in.shape[0]))
+    df_in['IRIs'] = df_in['IRIs'].astype(str).str.zfill(7)
+    next_iri_id += df_in.shape[0]
+
+    qtt_def['template_cols'].append({ # automatically define iri column
+        "name": "iri (automatic)",
+        "column": "IRIs",
+        "template": "ID",
+        "transformations": [{
+            "type": "prefix",
+            "params": [iri_base]
+        }]
+      })
+
+    entity_type = parent_iri if qtt_def['type'] == 'individual' else entity_type_map[qtt_def['type']]
     qtt_def['template_cols'].append({ # automatically define type column
         "name": "entity type (automatic)",
         "column": None,
@@ -48,17 +79,19 @@ for qtt_def in qtt_defs:
         }]
       })
 
-    # if entities are classes, superclass is the parent class. If they are individuals, there is no superclass.
-    superclass = qtt_def['parent_iri'] if qtt_def['type'] == 'class' else ''
-    qtt_def['template_cols'].append({ # automatically define superclass column
-        "name": "superclass (automatic)",
-        "column": None,
-        "template": "SC %",
-        "transformations": [{
-            "type": "use_fixed",
-            "params": [superclass]
-        }]
-      })
+    # for classes/properties, parent becomes superclass/superproperty if supplied
+    # even in case of instances, an empty column is created for the parent_cell
+    if 'parent' in qtt_def:
+        superentity = '' if qtt_def['type'] == 'individual' else parent_iri
+        qtt_def['template_cols'].append({ # automatically define superclass column
+            "name": "superclass (automatic)",
+            "column": None,
+            "template": "SC %",
+            "transformations": [{
+                "type": "use_fixed",
+                "params": [superentity]
+            }]
+          })
 
     finished_qtt_cols = []
     for template_def in qtt_def['template_cols']:
@@ -69,11 +102,12 @@ for qtt_def in qtt_defs:
         if 'language' in qtt_def and template_str == 'LABEL':
             template_str = 'AL rdfs:label@'+qtt_def['language']
 
-        if template_def['template'] == 'ID': parent_cell = qtt_def['parent_iri']
-        elif template_def['template'] == 'LABEL': parent_cell = qtt_def['parent_label']
-        elif template_def['template'] == 'TYPE': parent_cell = 'owl:Class'
-        elif template_def['template'] == 'SC %': parent_cell = qtt_def['parent_superclass']
-        else: parent_cell = ''
+        parent_cell = ''
+        if 'parent' in qtt_def:
+            if template_def['template'] == 'ID': parent_cell = parent_iri
+            elif template_def['template'] == 'LABEL': parent_cell = qtt_def['parent']['parent_label']
+            elif template_def['template'] == 'TYPE': parent_cell = 'owl:Class'
+            elif template_def['template'] == 'SC %': parent_cell = qtt_def['parent']['parent_superclass']
 
         transformed_col = pd.Series('', index=range(df_in.shape[0])) if template_def['column'] is None else df_in[template_def['column']]
         for trans_def in template_def['transformations']:
