@@ -14,6 +14,35 @@
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl"/>
         <terms:license rdf:resource="https://www.gnu.org/licenses/gpl-3.0"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://id.zbmed.de/fskxo/0000001 -->
+
+    <owl:Class rdf:about="http://id.zbmed.de/fskxo/0000001">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <rdfs:label xml:lang="en">Model Sub-Class</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://id.zbmed.de/fskxo/0000002 -->
+
+    <owl:Class rdf:about="http://id.zbmed.de/fskxo/0000002">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+        <rdfs:label xml:lang="en">Basic process</rdfs:label>
+    </owl:Class>
 </rdf:RDF>
 
 

@@ -28,7 +28,7 @@ qtt_json = 'example-qtts.json'
 run_robot_subprocess = False #runs ROBOT template method directly after finishing QTT creation
 robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
 iri_base = 'http://id.zbmed.de/fskxo/'
-iri_id_start = 1 #lowest number that should be assigned
+iri_id_start = 3 #lowest number that should be assigned
 
 
 # Load JSON definitions and validate the input
