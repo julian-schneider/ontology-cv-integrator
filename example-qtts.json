@@ -166,7 +166,7 @@
     "language": "en",
     "parent": {
       "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
-      "parent_label": "Product-matrix name"
+      "parent_label": "Product-matrix"
     },
     "template_cols": [
       {
@@ -244,7 +244,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000006",
       "parent_label": "Country"
     },
     "template_cols": [
@@ -265,7 +265,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000006",
       "parent_label": "Area of origin"
     },
     "template_cols": [
@@ -286,7 +286,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000006",
       "parent_label": "Fisheries area"
     },
     "template_cols": [
@@ -329,7 +329,7 @@
     "language": "en",
     "parent": {
       "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
-      "parent_label": "Hazard name"
+      "parent_label": "Hazard"
     },
     "template_cols": [
       {
@@ -371,7 +371,7 @@
     "language": "en",
     "parent": {
       "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
-      "parent_label": "Population name"
+      "parent_label": "Population"
     },
     "template_cols": [
       {
@@ -390,7 +390,7 @@
     "qtt_name": "region_qtt.tsv",
     "type": "individual",
     "parent": {
-      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000006",
       "parent_label": "Region"
     },
     "template_cols": [
@@ -412,7 +412,7 @@
     "language": "en",
     "parent": {
       "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
-      "parent_label": "Study Assay Technology Type"
+      "parent_label": "Study Assay Technology"
     },
     "template_cols": [
       {
@@ -468,6 +468,12 @@
         "column": "Value",
         "template": "LABEL",
         "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
       }
     ],
     "drop_rows": [4, 6]
@@ -481,7 +487,7 @@
     "language": "en",
     "parent": {
       "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
-      "parent_label": "Type of sampling program"
+      "parent_label": "Sampling program"
     },
     "template_cols": [
       {
@@ -512,17 +518,733 @@
         "transformations": []
       },
       {
-        "name": "Class IRI",
-        "column": "ID",
-        "template": "ID",
-        "transformations": [
-          {
-            "type": "prefix",
-            "params": ["http://id.zbmed.de/ssd/"]
-          }
-        ]
+        "name": "Standards",
+        "column": "Comment",
+        "template": "AL http://purl.org/dc/terms/source@en",
+        "transformations": []
       }
     ],
     "drop_rows": [13, 16, 19]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Sampling point",
+    "qtt_name": "sampling_point_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+      "parent_label": "Sampling point"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [42, 66]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Method tool to collect data",
+    "qtt_name": "method_data_collection_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Method tool to collect data"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Type of records",
+    "qtt_name": "record_types_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Dietary record type"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [4]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Food descriptors",
+    "qtt_name": "food_descriptors_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+      "parent_label": "Food descriptors"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [1860, 1926]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Laboratory accreditation",
+    "qtt_name": "laboratory_accreditation_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Laboratory Accreditation"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [4]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter classification",
+    "qtt_name": "parameter_classification_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Parameter classification"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter unit",
+    "qtt_name": "parameter_unit_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Parameter unit"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      },
+      {
+        "name": "Category",
+        "column": "Category",
+        "template": "AL http://purl.org/dc/terms/type@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [2, 214]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter unit category",
+    "qtt_name": "parameter_unit_category_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Parameter unit category"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [19, 24]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter data type",
+    "qtt_name": "parameter_data_type_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Parameter data type"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Elucidation",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000600@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter source",
+    "qtt_name": "parameter_source_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Parameter source"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [8, 9]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Parameter subject",
+    "qtt_name": "parameter_subject_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000030",
+      "parent_label": "Parameter subject"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [9]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Model equation class-distr",
+    "qtt_name": "model_equation_class_distr_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Model equation class/distribution"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [18]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Fitting procedure",
+    "qtt_name": "fitting_procedure_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+      "parent_label": "Fitting procedure"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [3]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Type of exposure",
+    "qtt_name": "type_of_exposure_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000015",
+      "parent_label": "Exposure"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [4]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Source",
+    "qtt_name": "source_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Source"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Rights",
+    "qtt_name": "rights_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Rights"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Abbreviation",
+        "column": "ID",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+        "transformations": []
+      },
+      {
+        "name": "External Definition",
+        "column": "Comment",
+        "template": "AL http://purl.org/dc/terms/source@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [41, 64, 65, 66, 67, 68]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Availability",
+    "qtt_name": "availability_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Availability"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [5]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Publication type",
+    "qtt_name": "publication_type_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Publication type"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "REFERENCE TYPE",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Abbreviation",
+        "column": "FIELD NAME",
+        "template": "A http://www.geneontology.org/formats/oboInOwl#hasSynonym",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Publication Status",
+    "qtt_name": "publication_status_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Publication status"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [7]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Software",
+    "qtt_name": "software_qtt.tsv",
+    "type": "individual",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Software"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [8]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Language written in",
+    "qtt_name": "language_written_in_qtt.tsv",
+    "type": "individual",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Programming language"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [40]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Model Class",
+    "qtt_name": "model_class_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000141",
+      "parent_label": "Model Class"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [2]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Predictive Model",
+    "qtt_name": "model_subclass_1_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "Predictive model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [7]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Other Empirical Model",
+    "qtt_name": "model_subclass_2_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "Other Empirical Model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [4]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Process Model",
+    "qtt_name": "model_subclass_3_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "Process Model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [7, 40, 59]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Dose-response Model",
+    "qtt_name": "model_subclass_4_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "Dose-response Model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [5]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Health metrics Model",
+    "qtt_name": "model_subclass_5_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "Health metrics Model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "QRA Model",
+    "qtt_name": "model_subclass_6_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_label": "QRA Model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": []
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Basic process, Predictive Model",
+    "qtt_name": "basic_process_1_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000002",
+      "parent_label": "Basic process in predictive model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [9]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Basic process, Process Model",
+    "qtt_name": "basic_process_2_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://id.zbmed.de/fskxo/0000002",
+      "parent_label": "Basic process in process model"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [23]
+  },
+
+  {
+    "file": "Controlled_Vocabularies_Master_Table_V1.04.xlsx",
+    "sheet": "Status",
+    "qtt_name": "status_qtt.tsv",
+    "type": "individual",
+    "language": "en",
+    "parent": {
+      "parent_superclass": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "parent_label": "Model status"
+    },
+    "template_cols": [
+      {
+        "name": "Entity Label",
+        "column": "Value",
+        "template": "LABEL",
+        "transformations": []
+      },
+      {
+        "name": "Definition",
+        "column": "Comment",
+        "template": "AL http://purl.obolibrary.org/obo/IAO_0000115@en",
+        "transformations": []
+      }
+    ],
+    "drop_rows": [3]
   }
 ]
