@@ -1,6 +1,5 @@
 import subprocess
 import os
-import wget
 import json
 from jsonschema import validate
 import pandas as pd
@@ -24,11 +23,14 @@ entity_type_map = {
 }
 
 # EDITABLE DEFAULTS:
-qtt_json = 'example-qtts.json'
+qtt_json = 'fskxo-instructions.json'
+del_duplicate_labels = True #per sheet, if multiple rows have the same label, only keep the first occurrence
 run_robot_subprocess = False #runs ROBOT template method directly after finishing QTT creation
-robot_installation = '/custom/path/to/ROBOT' #only used if run_robot_subprocess is True
-iri_base = 'http://id.zbmed.de/fskxo/'
+robot_installation = '/home/schneider/applications/ROBOT' #only used if run_robot_subprocess is True
+iri_base = 'http://semanticlookup.zbmed.de/km/fskxo/FSKXO_'
 iri_id_start = 3 #lowest number that should be assigned
+base_onto = 'fskxo-base.owl'
+output_onto = 'fskxo.owl'
 
 
 # Load JSON definitions and validate the input
@@ -52,10 +54,10 @@ for qtt_def in qtt_defs:
 
     # Assign IRIs for parent and entities
     if "parent" in qtt_def:
-        parent_iri = iri_base + str(next_iri_id).zfill(7)
+        parent_iri = iri_base + str(next_iri_id).zfill(10)
         next_iri_id += 1
     df_in['IRIs'] = pd.Series(range(next_iri_id, next_iri_id + df_in.shape[0]))
-    df_in['IRIs'] = df_in['IRIs'].astype(str).str.zfill(7)
+    df_in['IRIs'] = df_in['IRIs'].astype(str).str.zfill(10)
     next_iri_id += df_in.shape[0]
 
     qtt_def['template_cols'].append({ # automatically define iri column
@@ -94,11 +96,17 @@ for qtt_def in qtt_defs:
           })
 
     finished_qtt_cols = []
+    duplicate_idx = [] # indicates rows with duplicate labels
     for template_def in qtt_def['template_cols']:
         if 'name' not in template_def: template_def['name'] = 'UNNAMED'
 
-        # If language is given for the qtt, LABEL gets the annotation
         template_str = template_def['template']
+
+        # mark rows with duplicate labels
+        if template_str == 'LABEL':
+            duplicate_idx = df_in[df_in[template_def['column']].duplicated()].index.values + 3 #shift 3 for QTT header rows
+
+        # If language is given for the qtt, LABEL gets the annotation
         if 'language' in qtt_def and template_str == 'LABEL':
             template_str = 'AL rdfs:label@'+qtt_def['language']
 
@@ -115,6 +123,12 @@ for qtt_def in qtt_defs:
         finished_qtt_cols.append(pd.concat([pd.Series([template_def['name'], template_str, parent_cell]), transformed_col], ignore_index=True))
 
     df_out = pd.concat(finished_qtt_cols, axis=1, keys=[s.name for s in finished_qtt_cols])
+
+    # if wanted, only keep the first occurrence when label has duplicates
+    if del_duplicate_labels and len(duplicate_idx) > 0:
+        df_out = df_out.drop(duplicate_idx)
+        print('Dropped', len(duplicate_idx), 'duplicates from:', qtt_def['sheet'])
+
     template_row = df_out.loc[1]
     assert 'ID' in set(template_row) or 'LABEL' in set(template_row), 'The QTT definition for '+qtt_def['qtt_name']+' must contain "ID" or "LABEL" templates'
     df_out.to_csv('qtt/'+qtt_def['qtt_name'], sep='\t', header=False, index=False)
@@ -122,7 +136,7 @@ for qtt_def in qtt_defs:
 
 
 # Optionally run ROBOT template for all built QTT files
-robot_cmd = 'robot template --merge-before -t '+ ' -t '.join(finished_qtt_files)+' --input cv-ontology-base.owl --output cv-ontology-filled.owl'
+robot_cmd = 'robot template --merge-before -t ' + ' -t '.join(finished_qtt_files)+' --input ' + base_onto + ' --output ' + output_onto
 if run_robot_subprocess:
     os.environ['PATH'] += ':'+robot_installation
     subprocess.run(robot_cmd, shell=True)

@@ -1054,7 +1054,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "Predictive model"
     },
     "template_cols": [
@@ -1075,7 +1075,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "Other Empirical Model"
     },
     "template_cols": [
@@ -1096,7 +1096,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "Process Model"
     },
     "template_cols": [
@@ -1117,7 +1117,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "Dose-response Model"
     },
     "template_cols": [
@@ -1138,7 +1138,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "Health metrics Model"
     },
     "template_cols": [
@@ -1165,7 +1165,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000001",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000001",
       "parent_label": "QRA Model"
     },
     "template_cols": [
@@ -1186,7 +1186,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000002",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000002",
       "parent_label": "Basic process in predictive model"
     },
     "template_cols": [
@@ -1207,7 +1207,7 @@
     "type": "individual",
     "language": "en",
     "parent": {
-      "parent_superclass": "http://id.zbmed.de/fskxo/0000002",
+      "parent_superclass": "http://semanticlookup.zbmed.de/km/fskxo/FSKXO_0000000002",
       "parent_label": "Basic process in process model"
     },
     "template_cols": [
