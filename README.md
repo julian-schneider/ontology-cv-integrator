@@ -1,9 +1,9 @@
 # Adds Controlled Vocabularies to BFO
 
 Reads controlled vocabulary contents from Excel spreadsheets, transforming them into valid [Quick Term Template](http://robot.obolibrary.org/template) files.
-Optionally runs uses ROBOT's template function to insert them into an empty ontology that imports BFO.
+Optionally runs uses ROBOT's template function to insert them into an .owl ontology file.
 
-As an example, `example-qtts.json` creates the FSKX Ontology from the spreadsheet `Controlled_Vocabularies_Master_Table_V1.04` ([source](https://foodrisklabs.bfr.bund.de/controlled-vocabularies/))
+`fskxo-instructions.json` is used to create the FSKX Ontology from the spreadsheet `Controlled_Vocabularies_Master_Table_V1.04` ([source](https://foodrisklabs.bfr.bund.de/controlled-vocabularies/)), and can serve as an example for usage.
 
 
 ## Prerequisites
